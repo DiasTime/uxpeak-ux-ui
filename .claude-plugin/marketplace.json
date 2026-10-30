@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "diastime",
+  "description": "Claude Code plugins by DiasTime",
+  "owner": {
+    "name": "DiasTime",
+    "url": "https://github.com/DiasTime"
+  },
+  "plugins": [
+    {
+      "name": "uxpeak-ux-ui",
+      "description": "UX/UI rules from every video of the uxpeak YouTube channel: screen reviews, redesigns, design of new screens and flows, choosing between variants. The skill itself is in Russian.",
+      "version": "1.0.0",
+      "source": "./",
+      "category": "design",
+      "author": {
+        "name": "DiasTime",
+        "url": "https://github.com/DiasTime"
+      },
+      "homepage": "https://github.com/DiasTime/uxpeak-ux-ui"
+    }
+  ]
+}

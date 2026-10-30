@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "uxpeak-ux-ui",
+  "version": "1.0.0",
+  "description": "UX/UI rules from every video of the uxpeak YouTube channel: screen reviews, redesigns, design of new screens and flows, choosing between variants. The skill itself is in Russian.",
+  "author": {
+    "name": "DiasTime",
+    "url": "https://github.com/DiasTime"
+  },
+  "homepage": "https://github.com/DiasTime/uxpeak-ux-ui",
+  "repository": "https://github.com/DiasTime/uxpeak-ux-ui",
+  "keywords": [
+    "ux",
+    "ui",
+    "ux-design",
+    "ui-design",
+    "design-review",
+    "usability",
+    "conversion",
+    "uxpeak"
+  ]
+}

@@ -4,7 +4,7 @@
 
 **Русский** | [English](README.en.md)
 
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-0969da?style=flat-square&logo=claude&logoColor=white)](SKILL.md)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20v1.0.0-0969da?style=flat-square&logo=claude&logoColor=white)](.claude-plugin/plugin.json)
 [![YouTube](https://img.shields.io/badge/source-YouTube%20%40uxpeak-1f2328?style=flat-square&logo=youtube)](https://www.youtube.com/@uxpeak)
 ![Videos](https://img.shields.io/badge/videos-23%20·%205.5%20h-1f2328?style=flat-square)
 ![Language](https://img.shields.io/badge/lang-RU-1f2328?style=flat-square)
@@ -14,8 +14,8 @@
 **[uxpeak](https://www.youtube.com/@uxpeak)**. Внутри всё, что автор говорит во всех видео канала:
 что делать, чего не делать и почему.
 
-```bash
-git clone https://github.com/DiasTime/uxpeak-ux-ui.git ~/.claude/skills/uxpeak-ux-ui
+```
+/plugin install uxpeak-ux-ui --marketplace DiasTime/uxpeak-ux-ui
 ```
 
 </div>
@@ -51,22 +51,54 @@ git clone https://github.com/DiasTime/uxpeak-ux-ui.git ~/.claude/skills/uxpeak-u
 
 ## Установка
 
-**Claude Code, для всех проектов**
+Это плагин Claude Code. Репозиторий одновременно служит маркетплейсом `diastime`, поэтому
+ставится одной командой.
+
+**В Claude Code** (версия 2.1.275 и новее):
+
+```
+/plugin install uxpeak-ux-ui --marketplace DiasTime/uxpeak-ux-ui
+```
+
+**Из терминала:**
+
+```bash
+claude plugin install uxpeak-ux-ui --marketplace DiasTime/uxpeak-ux-ui
+```
+
+**В более старых версиях** — в два шага:
+
+```
+/plugin marketplace add DiasTime/uxpeak-ux-ui
+/plugin install uxpeak-ux-ui@diastime
+```
+
+Скилл заработает в новой сессии (или сразу после `/reload-plugins`). Вызвать его вручную можно
+командой `/uxpeak-ux-ui:uxpeak-ux-ui`, но обычно он включается сам.
+
+**Для всей команды проекта** добавь `--scope project`: плагин запишется в `.claude/settings.json`
+проекта, и Claude Code предложит его каждому, кто откроет проект.
+
+| Действие | Команда |
+| :-- | :-- |
+| Обновить | `claude plugin update uxpeak-ux-ui@diastime` |
+| Выключить на время | `claude plugin disable uxpeak-ux-ui@diastime` |
+| Удалить | `claude plugin uninstall uxpeak-ux-ui@diastime` |
+
+<details>
+<summary><b>Без системы плагинов: обычная папка скилла</b></summary>
+
+Склонируй репозиторий в папку скиллов. Новые версии Claude Code подхватят его как плагин
+`uxpeak-ux-ui@skills-dir`:
 
 ```bash
 git clone https://github.com/DiasTime/uxpeak-ux-ui.git ~/.claude/skills/uxpeak-ux-ui
 ```
 
-Windows (PowerShell):
+Для старых версий или других агентов скопируй в папку скиллов только
+[`skills/uxpeak-ux-ui`](skills/uxpeak-ux-ui): это самостоятельный скилл со своим `SKILL.md`.
 
-```powershell
-git clone https://github.com/DiasTime/uxpeak-ux-ui.git "$env:USERPROFILE\.claude\skills\uxpeak-ux-ui"
-```
-
-**Только для одного проекта.** Склонируй в `.claude/skills/uxpeak-ux-ui` внутри репозитория проекта.
-
-После установки скилл появится в списке доступных в новой сессии. Проверить можно командой
-`/uxpeak-ux-ui`.
+</details>
 
 <details>
 <summary><b>Необязательно: связать со скиллами визуального стиля через CLAUDE.md</b></summary>
@@ -133,27 +165,32 @@ For UX/UI reviews, design critiques and choosing between design variants with no
 12. **Учись у выпущенных продуктов и тестируй.** Реальные экраны, а не только Dribbble; тест,
     оптимизация, снова тест.
 
-Полная шпаргалка «делай / не делай» по шести темам — в [SKILL.md](SKILL.md).
+Полная шпаргалка «делай / не делай» по шести темам — в [SKILL.md](skills/uxpeak-ux-ui/SKILL.md).
 
 ## Что внутри
 
 ```
 uxpeak-ux-ui/
-├── SKILL.md                      главное: идеи, шпаргалка, порядок ревью и проектирования
-├── references/
-│   ├── visual-ui.md              иерархия, шрифты, цвет, сетка, тени, иконки, фото
-│   ├── ux-psychology.md          15 принципов «плохо / хорошо» и этические границы
-│   ├── conversion-ecommerce.md   15 ошибок карточки товара, пейвол, цены, бронирование
-│   ├── mobile-patterns.md        навигация, ввод, поиск, фильтры, списки, пустые состояния
-│   ├── process-and-craft.md      design thinking, Figma, прототипы, сборка сайта с нуля
-│   └── sources.md                все 23 видео: что взято из каждого
-├── evals/product-page-review/    тест на карточке товара с 17 заложенными ошибками
-├── docs/test-prompt.md           промпт и чеклист для проверки на целом сайте
+├── .claude-plugin/
+│   ├── plugin.json                   манифест плагина
+│   └── marketplace.json              маркетплейс diastime (для установки одной командой)
+├── skills/uxpeak-ux-ui/
+│   ├── SKILL.md                      главное: идеи, шпаргалка, порядок ревью и проектирования
+│   └── references/
+│       ├── visual-ui.md              иерархия, шрифты, цвет, сетка, тени, иконки, фото
+│       ├── ux-psychology.md          15 принципов «плохо / хорошо» и этические границы
+│       ├── conversion-ecommerce.md   15 ошибок карточки товара, пейвол, цены, бронирование
+│       ├── mobile-patterns.md        навигация, ввод, поиск, фильтры, списки, пустые состояния
+│       ├── process-and-craft.md      design thinking, Figma, прототипы, сборка сайта с нуля
+│       └── sources.md                все 23 видео: что взято из каждого
+├── evals/product-page-review/        тест на карточке товара с 17 заложенными ошибками
+├── docs/test-prompt.md               промпт и чеклист для проверки на целом сайте
 └── assets/banner.svg
 ```
 
-Claude читает `SKILL.md` при срабатывании, а справочники открывает только когда они нужны.
-Папки `evals`, `docs` и `assets` в работу скилла не загружаются.
+В каждую сессию попадает только описание скилла, около 340 токенов. `SKILL.md` (~6,7 тыс.
+токенов) читается, когда скилл срабатывает, а справочники — только когда они нужны. Папки
+`evals`, `docs` и `assets` в работу скилла не загружаются.
 
 ## Проверка
 
@@ -181,16 +218,21 @@ yt-dlp: список видео  →  аудио 23 роликов  →  whisper
 - Цифры вроде «конверсия выросла с 2 % до 7 %» — примеры канала, а не гарантии. В скилле это
   оговорено.
 
-Таблица всех видео с датами: [references/sources.md](references/sources.md).
+Таблица всех видео с датами: [sources.md](skills/uxpeak-ux-ui/references/sources.md).
 
 ## Обновление
 
 ```bash
-git -C ~/.claude/skills/uxpeak-ux-ui pull
+claude plugin update uxpeak-ux-ui@diastime
 ```
 
+После обновления перезапусти Claude Code. Если ставил через `git clone`, обновляй командой
+`git -C ~/.claude/skills/uxpeak-ux-ui pull`.
+
 Когда на канале выходят новые видео, их можно добавить по инструкции в конце
-[references/sources.md](references/sources.md).
+[sources.md](skills/uxpeak-ux-ui/references/sources.md). При выпуске новой версии поднимай
+`version` в `.claude-plugin/plugin.json` и в `marketplace.json`, иначе у установивших не
+появится обновление.
 
 ## Правовая оговорка
 

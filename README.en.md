@@ -4,7 +4,7 @@
 
 [Русский](README.md) | **English**
 
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-0969da?style=flat-square&logo=claude&logoColor=white)](SKILL.md)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20v1.0.0-0969da?style=flat-square&logo=claude&logoColor=white)](.claude-plugin/plugin.json)
 [![YouTube](https://img.shields.io/badge/source-YouTube%20%40uxpeak-1f2328?style=flat-square&logo=youtube)](https://www.youtube.com/@uxpeak)
 ![Videos](https://img.shields.io/badge/videos-23%20·%205.5%20h-1f2328?style=flat-square)
 ![Language](https://img.shields.io/badge/lang-RU-1f2328?style=flat-square)
@@ -14,8 +14,8 @@ A Claude skill that reviews and designs interfaces by the rules of the
 **[uxpeak](https://www.youtube.com/@uxpeak)** YouTube channel: everything the author teaches across
 all of the channel's videos, as do's, don'ts and the reasons behind them.
 
-```bash
-git clone https://github.com/DiasTime/uxpeak-ux-ui.git ~/.claude/skills/uxpeak-ux-ui
+```
+/plugin install uxpeak-ux-ui --marketplace DiasTime/uxpeak-ux-ui
 ```
 
 </div>
@@ -41,18 +41,52 @@ makes the UX decisions.
 
 ## Install
 
+This is a Claude Code plugin, and the repository doubles as the `diastime` marketplace, so it
+installs in one step.
+
+**Inside Claude Code** (2.1.275 or later):
+
+```
+/plugin install uxpeak-ux-ui --marketplace DiasTime/uxpeak-ux-ui
+```
+
+**From a terminal:**
+
+```bash
+claude plugin install uxpeak-ux-ui --marketplace DiasTime/uxpeak-ux-ui
+```
+
+**Older versions**, in two steps:
+
+```
+/plugin marketplace add DiasTime/uxpeak-ux-ui
+/plugin install uxpeak-ux-ui@diastime
+```
+
+The skill is available in the next session (or right after `/reload-plugins`). It triggers on its
+own; to call it by hand, use `/uxpeak-ux-ui:uxpeak-ux-ui`. Add `--scope project` to share it with
+everyone who opens the project.
+
+| Action | Command |
+| :-- | :-- |
+| Update | `claude plugin update uxpeak-ux-ui@diastime` |
+| Disable | `claude plugin disable uxpeak-ux-ui@diastime` |
+| Uninstall | `claude plugin uninstall uxpeak-ux-ui@diastime` |
+
+<details>
+<summary><b>Without the plugin system: a plain skill folder</b></summary>
+
+Clone into your skills folder; recent Claude Code versions load it as the `uxpeak-ux-ui@skills-dir`
+plugin:
+
 ```bash
 git clone https://github.com/DiasTime/uxpeak-ux-ui.git ~/.claude/skills/uxpeak-ux-ui
 ```
 
-Windows (PowerShell):
+For older versions or other agents, copy just [`skills/uxpeak-ux-ui`](skills/uxpeak-ux-ui) into
+your skills folder: it is a self-contained skill with its own `SKILL.md`.
 
-```powershell
-git clone https://github.com/DiasTime/uxpeak-ux-ui.git "$env:USERPROFILE\.claude\skills\uxpeak-ux-ui"
-```
-
-For a single project, clone into `.claude/skills/uxpeak-ux-ui` inside that project. Start a new
-session and check with `/uxpeak-ux-ui`. Update with `git -C ~/.claude/skills/uxpeak-ux-ui pull`.
+</details>
 
 ## The 12 core ideas
 
@@ -77,15 +111,19 @@ session and check with `/uxpeak-ux-ui`. Update with `git -C ~/.claude/skills/uxp
 
 | File | Contents |
 | :-- | :-- |
-| [`SKILL.md`](SKILL.md) | Core ideas, do/don't cheat sheet, review and design workflows |
-| [`references/visual-ui.md`](references/visual-ui.md) | Hierarchy, type, colour, grid, shadows, icons, imagery |
-| [`references/ux-psychology.md`](references/ux-psychology.md) | 15 principles with bad/good examples and ethical limits |
-| [`references/conversion-ecommerce.md`](references/conversion-ecommerce.md) | 15 product page mistakes, paywall, pricing, booking |
-| [`references/mobile-patterns.md`](references/mobile-patterns.md) | Navigation, input, search, filters, lists, empty states |
-| [`references/process-and-craft.md`](references/process-and-craft.md) | Design thinking, Figma, prototyping, building a site from scratch |
-| [`references/sources.md`](references/sources.md) | All 23 videos and what was taken from each |
+| [`.claude-plugin/`](.claude-plugin) | Plugin manifest and the `diastime` marketplace |
+| [`SKILL.md`](skills/uxpeak-ux-ui/SKILL.md) | Core ideas, do/don't cheat sheet, review and design workflows |
+| [`references/visual-ui.md`](skills/uxpeak-ux-ui/references/visual-ui.md) | Hierarchy, type, colour, grid, shadows, icons, imagery |
+| [`references/ux-psychology.md`](skills/uxpeak-ux-ui/references/ux-psychology.md) | 15 principles with bad/good examples and ethical limits |
+| [`references/conversion-ecommerce.md`](skills/uxpeak-ux-ui/references/conversion-ecommerce.md) | 15 product page mistakes, paywall, pricing, booking |
+| [`references/mobile-patterns.md`](skills/uxpeak-ux-ui/references/mobile-patterns.md) | Navigation, input, search, filters, lists, empty states |
+| [`references/process-and-craft.md`](skills/uxpeak-ux-ui/references/process-and-craft.md) | Design thinking, Figma, prototyping, building a site from scratch |
+| [`references/sources.md`](skills/uxpeak-ux-ui/references/sources.md) | All 23 videos and what was taken from each |
 | [`evals/product-page-review`](evals/product-page-review/README.md) | Test page with 17 planted flaws and both reviews |
 | [`docs/test-prompt.md`](docs/test-prompt.md) | A prompt and checklist to test the skill on a whole site |
+
+Only the skill's description (~340 tokens) is added to every session. `SKILL.md` (~6.7k tokens)
+loads when the skill fires, the references only when needed.
 
 ## Test
 
