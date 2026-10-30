@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=375">
+<title>Мёд горный</title>
+<style>
+  body { margin: 0; width: 375px; font-family: Arial, sans-serif; background: #fff; color: #000; }
+  .hero { position: relative; height: 360px; background: #f6e7b8 url('honey-light.jpg') center/cover; }
+  .hero .icons { position: absolute; top: 16px; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 12px; }
+  .hero .icons span { color: #fff; font-size: 22px; }           /* white icons straight on a light photo */
+  .badge { display: inline-block; margin: 14px 0 0 19px; background: #ff0000; color: #ffff00; font: bold 11px Arial; padding: 4px 6px; }
+  h1 { font-family: "Times New Roman", serif; font-size: 22px; font-weight: 900; margin: 8px 0 0 13px; }
+  .desc { font-family: Verdana, sans-serif; font-size: 13px; line-height: 1.1; margin: 10px 21px 0 16px; color: #000; }
+  .price-row { margin: 40px 0 0 16px; font-family: "Comic Sans MS", cursive; font-size: 18px; }
+  .card { margin: 16px; padding: 12px; box-shadow: 0 6px 6px rgba(0,0,0,.6); border-radius: 4px; }
+  hr { border: 0; border-top: 3px solid #222; margin: 28px 0; }
+  .features span { display: inline-block; margin-right: 10px; font-size: 13px; }
+  .f1 { color: #e91e63; } .f2 { color: #2196f3; } .f3 { color: #4caf50; } .f4 { color: #ff9800; }
+  select, .radio { margin: 8px 16px; font-size: 14px; }
+  .qty { margin: 90px 16px 0; }
+  .cta { display: block; margin: 16px; padding: 18px; width: calc(100% - 32px); background: #ff0000; color: #fff; font: 900 18px Arial; text-transform: uppercase; border: 0; border-radius: 0; }
+  .trust { margin: 0 16px; font-size: 12px; color: #666; }
+  .reviews { margin: 40px 16px; font-size: 13px; }
+  .chip { display:inline-block; width: 26px; height: 26px; border-radius: 50%; background:#ddd; text-align:center; line-height:26px; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="icons"><span>←</span><span>♡ ⤴</span></div>
+  </div>
+
+  <span class="badge">🔥 СКИДКА 20% ДИСКОНТ СКИДКА</span>
+  <h1>Мёд горный натуральный 1 кг</h1>
+  <p class="desc">Натуральный горный мёд с пасек Заилийского Алатау. Собран летом, не нагревался и не фильтровался под давлением. Подходит для чая, выпечки и как самостоятельное лакомство. Хранить при комнатной температуре в сухом месте.</p>
+
+  <div class="price-row">Цена: 6 500 ₸</div>
+
+  <hr>
+  <div class="card features">
+    <span class="f1">🌸 Без сахара</span>
+    <span class="f2">❄ Сырой</span>
+    <span class="f3">✔ Эко</span>
+    <span class="f4">⛰ Горы</span>
+  </div>
+  <hr>
+
+  <label style="margin-left:16px">Вид мёда:</label>
+  <select>
+    <option>Разнотравье</option>
+    <option>Донниковый</option>
+    <option>Эспарцетовый</option>
+  </select>
+
+  <div class="radio"><input type="radio" name="t" checked> Разовая покупка</div>
+  <div class="radio"><input type="radio" name="t"> Подписка (каждый месяц)</div>
+
+  <div class="qty">Количество: <span class="chip">−</span> 1 <span class="chip">+</span></div>
+
+  <button class="cta">Добавить в корзину</button>
+  <div class="trust">✓ Бесплатная доставка &nbsp; ✓ Возврат денег &nbsp; ✓ Гарантия качества</div>
+
+  <div class="reviews">★★★★★ 5.0 · 100+ отзывов</div>
+</body>
+</html>
